@@ -3,7 +3,7 @@ import joblib
 import numpy as np
 
 # Load model
-model = joblib.load('../model/crop_model.pkl')
+model = joblib.load('./model/crop_model.pkl')
 
 # App Title
 st.title("🌾 Crop Recommendation System")
