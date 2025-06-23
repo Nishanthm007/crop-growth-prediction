@@ -6,6 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import joblib
 import os
+from sklearn.metrics import classification_report
 
 # Load dataset from correct relative path
 df = pd.read_csv('../data/Crop_recommendation.csv')
@@ -26,5 +27,16 @@ y_pred = model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(f"✅ Model Accuracy: {accuracy * 100:.2f}%")
 
-# Save model to ../model/
+# Save model
 joblib.dump(model, '../model/crop_model.pkl')
+print("✅ Model saved to: ../model/crop_model.pkl")
+
+# ✅ Save feature importances for explainability
+importances = model.feature_importances_
+importance_df = pd.DataFrame({
+    'Feature': X.columns,
+    'Importance': importances
+}).sort_values(by='Importance', ascending=False)
+
+importance_df.to_csv('../model/feature_importance.csv', index=False)
+print("✅ Feature importances saved to ../model/feature_importance.csv")
