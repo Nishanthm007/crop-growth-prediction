@@ -14,7 +14,7 @@ def show_explainability():
 
     # Feature Importance
     try:
-        df = pd.read_csv('./model/feature_importance.csv')  # or wherever it's stored
+        df = pd.read_csv('../model/feature_importance.csv')  # or wherever it's stored
         fig = px.bar(
             df.sort_values(by='Importance', ascending=True),
             x='Importance',
@@ -41,8 +41,8 @@ def show_explainability():
     st.title("📈 Model Evaluation Report")
     try:
         # Load model and dataset
-        model = joblib.load('./model/crop_model.pkl')
-        data = pd.read_csv('./data/Crop_recommendation.csv')
+        model = joblib.load('../model/crop_model.pkl')
+        data = pd.read_csv('../data/Crop_recommendation.csv')
         X = data.drop('label', axis=1)
         y = data['label']
 
@@ -71,7 +71,7 @@ def show_explainability():
     st.markdown("## 🥧 Crop Distribution in Dataset")
 
     # Load dataset
-    df = pd.read_csv('./data/Crop_recommendation.csv')
+    df = pd.read_csv('../data/Crop_recommendation.csv')
     label_counts = df['label'].value_counts().reset_index()
     label_counts.columns = ['Crop', 'Count']
 
