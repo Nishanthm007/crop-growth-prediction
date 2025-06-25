@@ -106,7 +106,7 @@ crop_info = {
 }
 
 # Load model once
-model = joblib.load('./model/crop_model.pkl')
+model = joblib.load('../model/crop_model.pkl')
 
 # --- Page 1: Crop Recommendation ---
 if page == "🌾 Crop Recommendation":
